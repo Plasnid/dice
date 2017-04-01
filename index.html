@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dice</title>
+</head>
+<body>
+  <button type="button" name="button" class="rollButton">Roll</button>
+  <ul class='rollResults'></ul>
+  <script>
+    function rolling(){
+      const roll = Math.ceil(Math.random()*6);
+      const rollResult = document.createElement('li');
+      const rollResults = document.querySelector('.rollResults');
+      rollResult.textContent = roll;
+      rollResults.appendChild(rollResult);
+    }
+    let rollButton = document.querySelector('.rollButton')
+      .addEventListener('click', rolling);
+  </script>
+</body>
+</html>
