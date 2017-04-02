@@ -7,14 +7,23 @@
   <title>dice</title>
 </head>
 <body>
+  <label for="numDice">Number of Dice</label><input type="number" min="1" max="10" id="numDice"/>
+  <label for="diceMax">Max value of Die</label><input type="number" min="2" max="20" id="diceMax"/>
   <button type="button" name="button" class="rollButton">Roll</button>
   <ul class='rollResults'></ul>
   <script>
     function rolling(){
-      const roll = Math.ceil(Math.random()*6);
+      const maxDieVal = document.querySelector('#diceMax').value;
+      const diceNumber = document.querySelector('#numDice').value;
+      const rolls = [];
+      if(!diceNumber || !maxDieVal) return;
+      for(let dNum = 0; dNum<diceNumber; dNum++){
+        const roll = Math.ceil(Math.random()* maxDieVal);
+        rolls.push(roll);
+      }
       const rollResult = document.createElement('li');
       const rollResults = document.querySelector('.rollResults');
-      rollResult.textContent = roll;
+      rollResult.textContent = rolls.join(',');
       rollResults.appendChild(rollResult);
     }
     let rollButton = document.querySelector('.rollButton')
